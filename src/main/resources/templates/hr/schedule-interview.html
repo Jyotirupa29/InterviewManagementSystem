@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Schedule Interview</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<header>
+
+    <h1>Schedule Interview</h1>
+
+    <nav>
+
+        <a th:href="@{/hr/dashboard}">Dashboard</a>
+
+        <a th:href="@{/hr/candidates}">Candidates</a>
+
+        <a th:href="@{/interview/list}">Interview List</a>
+
+        <a th:href="@{/logout}">Logout</a>
+
+    </nav>
+
+</header>
+
+<div class="container">
+
+<h2>Interview Details</h2>
+
+<form th:action="@{/interview/save}"
+      th:object="${interview}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label>Candidate</label>
+    <select th:field="*{candidate}">
+        <option value="">Select Candidate</option>
+        <option th:each="candidate : ${candidateList}"
+                th:value="${candidate.id}"
+                th:text="${candidate.name}">
+        </option>
+    </select>
+    <small style="color:red"
+           th:if="${#fields.hasErrors('candidate')}"
+           th:errors="*{candidate}"></small>
+
+    <br><br>
+
+    <label>HR</label>
+    <select th:field="*{hr}">
+        <option value="">Select HR</option>
+        <option th:each="hr : ${hrList}"
+                th:value="${hr.id}"
+                th:text="${hr.name}">
+        </option>
+    </select>
+    <small style="color:red"
+           th:if="${#fields.hasErrors('hr')}"
+           th:errors="*{hr}"></small>
+
+    <br><br>
+
+    <label>Interview Date</label>
+    <input type="date" th:field="*{interviewDate}">
+    <small style="color:red"
+           th:if="${#fields.hasErrors('interviewDate')}"
+           th:errors="*{interviewDate}"></small>
+
+    <br><br>
+
+    <label>Interview Time</label>
+    <input type="time" th:field="*{interviewTime}">
+    <small style="color:red"
+           th:if="${#fields.hasErrors('interviewTime')}"
+           th:errors="*{interviewTime}"></small>
+
+    <br><br>
+
+    <label>Interview Mode</label>
+    <select th:field="*{mode}">
+        <option value="">Select Mode</option>
+        <option value="ONLINE">ONLINE</option>
+        <option value="OFFLINE">OFFLINE</option>
+    </select>
+    <small style="color:red"
+           th:if="${#fields.hasErrors('mode')}"
+           th:errors="*{mode}"></small>
+
+    <br><br>
+
+    <label>Meeting Link / Location</label>
+    <input type="text"
+           th:field="*{location}"
+           placeholder="Google Meet Link / Office Address">
+    <small style="color:red"
+           th:if="${#fields.hasErrors('location')}"
+           th:errors="*{location}"></small>
+
+    <br><br>
+
+    <label>Status</label>
+    <select th:field="*{status}">
+        <option value="">Select Status</option>
+        <option value="SCHEDULED">SCHEDULED</option>
+    </select>
+    <small style="color:red"
+           th:if="${#fields.hasErrors('status')}"
+           th:errors="*{status}"></small>
+
+    <br><br>
+
+    <button type="submit">Schedule Interview</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

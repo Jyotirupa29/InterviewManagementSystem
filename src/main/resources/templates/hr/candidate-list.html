@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Candidate List</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<header>
+
+    <h1>Candidate Management</h1>
+
+    <nav>
+
+        <a th:href="@{/hr/dashboard}">Dashboard</a>
+
+        <a th:href="@{/hr/addCandidate}">Add Candidate</a>
+
+        <a th:href="@{/logout}">Logout</a>
+
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <h2>Registered Candidates</h2>
+
+    <table border="1">
+
+        <thead>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Name</th>
+
+            <th>Email</th>
+
+            <th>Phone</th>
+
+            <th>Qualification</th>
+
+            <th>Skills</th>
+
+            <th>Resume</th>
+
+            <th>Action</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr th:each="candidate : ${candidateList}">
+
+            <td th:text="${candidate.id}"></td>
+
+            <td th:text="${candidate.name}"></td>
+
+            <td th:text="${candidate.email}"></td>
+
+            <td th:text="${candidate.phone}"></td>
+
+            <td th:text="${candidate.qualification}"></td>
+
+            <td th:text="${candidate.skills}"></td>
+
+            <td>
+                <span th:if="${candidate.resumePath != null}">
+                    Uploaded
+                </span>
+
+                <span th:if="${candidate.resumePath == null}">
+                    Not Uploaded
+                </span>
+            </td>
+
+            <td>
+
+                <a th:href="@{/hr/editCandidate/{id}(id=${candidate.id})}">
+                    <button>Edit</button>
+                </a>
+
+                <a th:href="@{/hr/deleteCandidate/{id}(id=${candidate.id})}">
+                    <button>Delete</button>
+                </a>
+
+                <a th:href="@{/interview/schedule/{id}(id=${candidate.id})}">
+                    <button>Schedule</button>
+                </a>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

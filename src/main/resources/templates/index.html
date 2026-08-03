@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Smart Interview Management System</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+	
+	<div class="logo-container">
+	    <img th:src="@{/images/logo.jpg}" alt="Logo" class="logo">
+	    <h2>Smart Interview Management System</h2>
+	</div>
+
+<header>
+
+    <h1>Smart Interview Management System</h1>
+
+    <nav>
+
+        <a th:href="@{/}">Home</a>
+
+        <a th:href="@{/login}">Login</a>
+
+        <a th:href="@{/register}">Register</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <h2>Welcome to Smart Interview Management System</h2>
+
+    <p>
+        Manage Candidates, Schedule Interviews,
+        Upload Resumes, and Track Interview Status
+        using one simple platform.
+    </p>
+
+    <a th:href="@{/login}">
+        <button>Get Started</button>
+    </a>
+
+</section>
+
+<section class="features">
+
+    <div class="card">
+        <h3>Candidate Registration</h3>
+        <p>Create your profile and upload your resume.</p>
+    </div>
+
+    <div class="card">
+        <h3>Interview Scheduling</h3>
+        <p>HR can schedule online and offline interviews.</p>
+    </div>
+
+    <div class="card">
+        <h3>Interview Feedback</h3>
+        <p>Store interview feedback and final status.</p>
+    </div>
+
+    <div class="card">
+        <h3>Admin Dashboard</h3>
+        <p>Manage HR users and monitor interview statistics.</p>
+    </div>
+
+</section>
+
+<footer>
+
+    <p>
+        © 2026 Smart Interview Management System
+    </p>
+
+</footer>
+
+</body>
+</html>

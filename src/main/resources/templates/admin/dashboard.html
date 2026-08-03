@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Admin Dashboard</h1>
+
+    <nav>
+        <a th:href="@{/admin/hrList}">Manage HR</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <h2 style="text-align:center;">Welcome Admin</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+
+            <h3>HR Management</h3>
+
+            <p>
+                Add, Update and Delete HR Accounts.
+            </p>
+
+            <a th:href="@{/admin/hrList}">
+                <button type="button">Manage HR</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

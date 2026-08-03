@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>HR Dashboard</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<header>
+
+    <h1>HR Dashboard</h1>
+
+    <nav>
+
+        <a th:href="@{/hr/dashboard}">Dashboard</a>
+
+        <a th:href="@{/hr/candidates}">Candidates</a>
+
+        <a th:href="@{/interview/list}">Interviews</a>
+
+        <a th:href="@{/logout}">Logout</a>
+
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <h2>Welcome HR</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+
+            <h3>Manage Candidates</h3>
+
+            <p>View, Add, Update and Delete Candidates.</p>
+
+            <a th:href="@{/hr/candidates}">
+                <button>Open</button>
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Schedule Interview</h3>
+
+            <p>Schedule interviews for candidates.</p>
+
+            <a th:href="@{/interview/schedule}">
+                <button>Schedule</button>
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Interview List</h3>
+
+            <p>View all scheduled interviews.</p>
+
+            <a th:href="@{/interview/list}">
+                <button>View</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Update Interview Status</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Update Interview Status</h1>
+
+<nav>
+
+<a th:href="@{/interview/list}">Back</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<form th:action="@{/interview/updateStatus}"
+      th:object="${interview}"
+      method="post">
+
+<input type="hidden" th:field="*{id}">
+
+<p>
+<b>Candidate :</b>
+<span th:text="${interview.candidate.name}"></span>
+</p>
+
+<p>
+<b>Date :</b>
+<span th:text="${interview.interviewDate}"></span>
+</p>
+
+<p>
+<b>Time :</b>
+<span th:text="${interview.interviewTime}"></span>
+</p>
+
+<label>Status</label>
+
+<select th:field="*{status}" required>
+
+<option value="">Select Status</option>
+
+<option th:each="status : ${statuses}"
+        th:value="${status}"
+        th:text="${status}">
+</option>
+
+</select>
+
+<br><br>
+
+<button type="submit">
+Update Status
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
