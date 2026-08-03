@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Interview Feedback</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Interview Feedback</h1>
+
+    <nav>
+
+        <a th:href="@{/hr/dashboard}">Dashboard</a>
+
+        <a th:href="@{/interview/list}">Interview List</a>
+
+        <a th:href="@{/feedback/list}">Feedback List</a>
+
+        <a th:href="@{/logout}">Logout</a>
+
+    </nav>
+
+</header>
+
+<div class="form-container">
+
+<h2 th:text="${feedback.id == null ? 'Add Feedback' : 'Update Feedback'}"></h2>
+
+<form th:action="${feedback.id == null} ?
+                 @{/feedback/save} :
+                 @{/feedback/update}"
+      th:object="${feedback}"
+      method="post">
+
+    <!-- Hidden Fields -->
+
+    <input type="hidden" th:field="*{id}">
+
+    <input type="hidden" th:field="*{interview.id}">
+
+    <!-- Candidate -->
+
+    <label>Candidate</label>
+
+    <input type="text"
+           th:value="${feedback.interview.candidate.name}"
+           readonly>
+
+    <br><br>
+
+    <!-- Technical Rating -->
+
+	<label>Technical Rating</label>
+
+	<select th:field="*{technicalRating}">
+	    <option value="">Select Rating</option>
+	    <option value="1">1</option>
+	    <option value="2">2</option>
+	    <option value="3">3</option>
+	    <option value="4">4</option>
+	    <option value="5">5</option>
+	</select>
+
+	<span class="error"
+	      th:if="${#fields.hasErrors('technicalRating')}"
+	      th:errors="*{technicalRating}"></span>
+
+	<br><br>
+
+    <!-- Communication Rating -->
+
+	<label>Communication Rating</label>
+
+	<select th:field="*{communicationRating}">
+	    <option value="">Select Rating</option>
+	    <option value="1">1</option>
+	    <option value="2">2</option>
+	    <option value="3">3</option>
+	    <option value="4">4</option>
+	    <option value="5">5</option>
+	</select>
+
+	<span class="error"
+	      th:if="${#fields.hasErrors('communicationRating')}"
+	      th:errors="*{communicationRating}"></span>
+
+	<br><br>
+
+    <!-- Comments -->
+
+	<label>Comments</label>
+
+	<textarea
+	        th:field="*{comments}"
+	        rows="5"
+	        placeholder="Enter Interview Feedback">
+	</textarea>
+
+	<span class="error"
+	      th:if="${#fields.hasErrors('comments')}"
+	      th:errors="*{comments}"></span>
+
+	<br><br>
+
+    <button type="submit"
+            th:text="${feedback.id == null ? 'Save Feedback' : 'Update Feedback'}">
+    </button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

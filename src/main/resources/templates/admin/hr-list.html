@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>HR List</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>HR Management</h1>
+
+<nav>
+
+<a th:href="@{/admin/dashboard}">Dashboard</a>
+
+<a th:href="@{/admin/addHR}">Add HR</a>
+
+<a th:href="@{/logout}">Logout</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<h2>All HR</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Actions</th>
+</tr>
+
+<tr th:each="hr : ${hrList}">
+
+<td th:text="${hr.id}"></td>
+<td th:text="${hr.name}"></td>
+<td th:text="${hr.email}"></td>
+<td th:text="${hr.phone}"></td>
+
+<td>
+
+<a th:href="@{/admin/editHR/{id}(id=${hr.id})}">
+<button type="button">Edit</button>
+</a>
+
+<a th:href="@{/admin/deleteHR/{id}(id=${hr.id})}">
+<button type="button">Delete</button>
+</a>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>

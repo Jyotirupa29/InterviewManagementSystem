@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Interview Status</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header>
+
+    <h1>Interview Status</h1>
+
+    <nav>
+        <a th:href="@{/candidate/dashboard}">Dashboard</a>
+        <a th:href="@{/candidate/profile}">Profile</a>
+        <a th:href="@{/candidate/uploadResume}">Upload Resume</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+
+</header>
+
+<div class="container">
+
+<h2>My Interview Details</h2>
+
+<table border="1">
+
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Mode</th>
+        <th>HR</th>
+        <th>Status</th>
+		<th>feedback</th>
+    </tr>
+
+    <tr th:each="interview : ${interviews}">
+        <td th:text="${interview.interviewDate}"></td>
+        <td th:text="${interview.interviewTime}"></td>
+        <td th:text="${interview.mode}"></td>
+        <td th:text="${interview.hr.name}"></td>
+        <td th:text="${interview.status}"></td>
+		<td th:text="${interview.feedback.comments}"></td>
+    </tr>
+
+</table>
+
+</div>
+
+</body>
+</html>

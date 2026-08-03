@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Upload Resume</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<header>
+
+    <h1>Upload Resume</h1>
+
+    <nav>
+        <a th:href="@{/candidate/dashboard}">Dashboard</a>
+		<a th:href="@{/candidate/profile}">Profile</a>
+        <a th:href="@{/candidate/interviewStatus}">Interview Status</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <h2>Upload Your Resume</h2>
+
+    <form th:action="@{/resume/upload/{id}(id=${candidate.id})}"
+          method="post"
+          enctype="multipart/form-data">
+
+        <label>Select Resume</label>
+
+        <input type="file"
+               name="file"
+               accept=".pdf,.doc,.docx"
+               required>
+
+        <br><br>
+
+        <button type="submit">
+            Upload Resume
+        </button>
+
+    </form>
+
+    <br>
+
+    <div th:if="${candidate.resumePath != null}">
+        <h3>Uploaded Resume</h3>
+
+        <p th:text="${candidate.resumePath}"></p>
+    </div>
+
+</div>
+
+</body>
+</html>

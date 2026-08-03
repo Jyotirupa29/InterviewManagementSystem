@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Candidate Profile</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<header>
+
+    <h1>Candidate Profile</h1>
+
+    <nav>
+        <a th:href="@{/candidate/dashboard}">Dashboard</a>
+        <a th:href="@{/candidate/uploadResume}">Upload Resume</a>
+        <a th:href="@{/candidate/interviewStatus}">Interview Status</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <div class="profile">
+
+        <img th:src="@{/images/profile-img.jpg}"
+             alt="Profile"
+             class="profile-img">
+
+    </div>
+
+
+    <h2>My Profile</h2>
+
+    <form th:action="@{/candidate/update}" th:object="${candidate}" method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <label>Full Name</label>
+        <input type="text" th:field="*{name}" required>
+
+        <label>Email</label>
+        <input type="email" th:field="*{email}" required>
+
+        <label>Phone Number</label>
+        <input type="text" th:field="*{phone}" required>
+
+        <label>Qualification</label>
+        <input type="text" th:field="*{qualification}" required>
+
+        <label>Skills</label>
+        <textarea th:field="*{skills}" rows="4"></textarea>
+
+        <button type="submit">Update Profile</button>
+
+    </form>
+
+</div>
+   
+</body>
+</html>

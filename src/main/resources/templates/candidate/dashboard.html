@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Candidate Dashboard</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+	<header class="dashboard-header">
+
+	    <h1>Candidate Dashboard</h1>
+
+	    <nav>
+	        <a th:href="@{/candidate/dashboard}" class="nav-btn">🏠 Home</a>
+
+	        <a th:href="@{/candidate/profile}" class="nav-btn">👤 Profile</a>
+
+	        <a th:href="@{/candidate/uploadResume}" class="nav-btn">📄 Upload Resume</a>
+
+	        <a th:href="@{/candidate/interviewStatus}" class="nav-btn">📅 Interview Status</a>
+
+	        <a th:href="@{/logout}" class="nav-btn logout-btn">🚪 Logout</a>
+	    </nav>
+
+	</header>
+
+	<h2 class="welcome">Welcome Candidate</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <h3>My Profile</h3>
+            <p>View and update your profile.</p>
+
+            <a th:href="@{/candidate/profile}">
+                <button>View</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Upload Resume</h3>
+            <p>Upload your latest resume.</p>
+
+            <a th:href="@{/candidate/uploadResume}">
+                <button>Upload</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Interview Status</h3>
+            <p>Check interview schedule and result.</p>
+
+            <a th:href="@{/candidate/interviewStatus}">
+                <button>Check</button>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
